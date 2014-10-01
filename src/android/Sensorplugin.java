@@ -21,10 +21,12 @@ public class SensorPlugin extends CordovaPlugin {
                 this.calendar( args, callbackContext );
                 return true;
             }
+            /*
             if (ECHO.equals(action)) {
                 this.echo ( args, callbackContext );
                 return true;
             }
+            */
             
             callbackContext.error("Invalid action");
             return false;
