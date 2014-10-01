@@ -13,6 +13,16 @@ var sensorplugin = {
                 "endTimeMillis": endDate.getTime()
             }]
         ); 
+    }, 
+    
+    putEcho: function ( msg, successCallback, errorCallback ) {
+        cordova.exec( 
+            successCallback,
+            errorCallback,
+            'Calendar',
+            'putEcho',
+            [ msg ]
+        );
     }
 }
 module.exports = sensorplugin;
