@@ -21,7 +21,7 @@ var sensorplugin = {
             errorCallback,
             'SensorPlugin',
             'putEcho',
-            [ msg ]
+            [{"message": msg}]
         );
     }
 }

@@ -21,7 +21,7 @@ public class SensorPlugin extends CordovaPlugin {
                 this.calendar( args, callbackContext );
                 return true;
             }
-            if (ACTION_ADD_CALENDAR_ENTRY.equals(action)) {
+            if (ECHO.equals(action)) {
                 this.echo ( args, callbackContext );
                 return true;
             }
@@ -36,8 +36,8 @@ public class SensorPlugin extends CordovaPlugin {
     }
     
     private void echo ( JSONArray args, CallbackContext callbackContext) throws JSONException {
-        String message = args.getString(0);
-        callbackContext.success(message);
+        JSONObject arg_object = args.getJSONObject(0);
+        callbackContext.success(arg_object.getString("message"));
     }
                 
     private void calendar ( JSONArray args, CallbackContext callbackContext ) throws JSONException {
