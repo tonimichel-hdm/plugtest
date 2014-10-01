@@ -10,7 +10,7 @@
     <keywords>phonegap,calendar</keywords>
 
 
-    <js-module src="www/sensorplugin.js" name="Calendar">
+    <js-module src="www/sensorplugin.js" name="SensorPlugin">
         <clobbers target="window.sensorplugin" />
     </js-module>
 
