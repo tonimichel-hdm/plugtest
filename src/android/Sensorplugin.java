@@ -21,7 +21,7 @@ public class SensorPlugin extends CordovaPlugin {
                 this.calendar( args, callbackContext );
                 return true;
             }
-            if (ACTION_ADD_CALENDAR_ENTRY.equals(action){
+            if (ACTION_ADD_CALENDAR_ENTRY.equals(action)) {
                 this.echo ( args, callbackContext );
                 return true;
             }
