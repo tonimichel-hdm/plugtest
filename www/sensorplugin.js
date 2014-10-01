@@ -15,14 +15,14 @@ var sensorplugin = {
         ); 
     } 
     
-    /*putEcho: function ( msg, successCallback, errorCallback ) {
+    putEcho: function ( msg, successCallback, errorCallback ) {
         cordova.exec( 
             successCallback,
             errorCallback,
             'SensorPlugin',
-            'putEcho',
+            'doEcho',
             [{"message": msg}]
         );
-    }*/
+    }
 }
 module.exports = sensorplugin;

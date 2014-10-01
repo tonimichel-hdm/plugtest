@@ -11,7 +11,7 @@ import android.content.Intent;
 
 public class SensorPlugin extends CordovaPlugin {
     public static final String ACTION_ADD_CALENDAR_ENTRY = "addCalendarEntry";
-    //public static final String ECHO = "putEcho";
+    public static final String ECHO = "doEcho";
     
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
@@ -21,12 +21,12 @@ public class SensorPlugin extends CordovaPlugin {
                 this.calendar( args, callbackContext );
                 return true;
             }
-            /*
+            
             if (ECHO.equals(action)) {
-                this.echo ( args, callbackContext );
+                this.doEcho ( args, callbackContext );
                 return true;
             }
-            */
+            
             
             callbackContext.error("Invalid action");
             return false;
@@ -36,12 +36,12 @@ public class SensorPlugin extends CordovaPlugin {
             return false;
         }
     }
-    /*
-    private void echo ( JSONArray args, CallbackContext callbackContext) throws JSONException {
+    
+    private void doEcho ( JSONArray args, CallbackContext callbackContext) throws JSONException {
         JSONObject arg_object = args.getJSONObject(0);
         callbackContext.success(arg_object.getString("message"));
     }
-    */
+    
     
     private void calendar ( JSONArray args, CallbackContext callbackContext ) throws JSONException {
         JSONObject arg_object = args.getJSONObject(0);
