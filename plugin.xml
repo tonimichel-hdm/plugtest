@@ -23,5 +23,6 @@
         </config-file>
 
         <source-file src="src/android/SensorPlugin.java" target-dir="src/org/tonimichel/sensorplugin" />      
-     </platform>          
+     </platform>      
+    
 </plugin>

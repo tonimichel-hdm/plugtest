@@ -15,4 +15,4 @@ var sensorplugin = {
         ); 
     }
 }
-module.exports = calendar;
+module.exports = sensorplugin;
