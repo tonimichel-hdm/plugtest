@@ -17,7 +17,7 @@
     <!-- android -->
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
-            <feature name="Calendar">
+            <feature name="SensorPlugin">
                 <param name="android-package" value="org.tonimichel.sensorplugin.SensorPlugin"/>
             </feature>
         </config-file>
