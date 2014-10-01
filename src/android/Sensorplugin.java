@@ -30,7 +30,7 @@ public class SensorPlugin extends CordovaPlugin {
         }
     }
     
-    private void calendar ( JSONArray args, CallbackContext callbackContext ) {
+    private void calendar ( JSONArray args, CallbackContext callbackContext ) throws JSONException {
         JSONObject arg_object = args.getJSONObject(0);
         Intent calIntent = new Intent(Intent.ACTION_EDIT)
             .setType("vnd.android.cursor.item/event")
