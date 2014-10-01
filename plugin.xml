@@ -4,7 +4,7 @@
            id="org.tonimichel.sensorplugin"
       version="0.1.0">
     
-    <name>Calendar</name>
+    <name>SensorPlugin</name>
     <description>Sample PhoneGap Calendar Plugin</description>
     <license>MIT</license>
     <keywords>phonegap,calendar</keywords>
