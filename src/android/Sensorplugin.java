@@ -62,15 +62,45 @@ public class SensorPlugin extends CordovaPlugin  {
     	Context ctx = this.cordova.getActivity().getApplicationContext();
         SensorManager mSensorManager;
         mSensorManager = (SensorManager) ctx.getSystemService(Context.SENSOR_SERVICE);
-    	List<Sensor> deviceSensors = mSensorManager.getSensorList(Sensor.TYPE_ALL);
+    	// List<Sensor> deviceSensors = mSensorManager.getSensorList(Sensor.TYPE_ALL);
         
     	/* Type Conversion fuer Kommunikation mit JS */
-    	JSONArray jsonDeviceSensors = new JSONArray(deviceSensors);
+    	JSONArray jsonDeviceSensors = poolAllSensors();
     	
     	/* Callback */
     	callbackContext.success(jsonDeviceSensors);
     }
     
+    public JSONArray poolAllSensors() {
+		List<Sensor> SensorList = Sensors.getSensorList( Sensor.TYPE_ALL );
+		
+		/* Loop through all sensor objects and create a JSON object */
+		JSONArray rtnJSON = new JSONArray();	
+		for( Sensor s : SensorList ){
+			JSONObject o = new JSONObject();
+			
+			try {
+				o.put( "vendor",		s.getVendor()				);
+				o.put( "name",			s.getName() 				);
+				o.put( "type",			checkType( s.getType() ) 	);
+				o.put( "version",		s.getVersion() 				);
+				o.put( "maxRange",		s.getMaximumRange() 		);
+				//o.put( "minDelay",		s.getMinDelay() 		);
+				o.put( "power",			s.getPower() 				);
+				o.put( "resolution",	s.getResolution() 			);
+				
+				rtnJSON.put(o);
+			} catch (JSONException e) {
+				e.printStackTrace();
+				return null;
+			}
+			
+		} //EOF for() loop
+		
+		return rtnJSON;
+	}    
+    
+    /*
     private void calendar ( JSONArray args, CallbackContext callbackContext ) throws JSONException {
         JSONObject arg_object = args.getJSONObject(0);
         Intent calIntent = new Intent(Intent.ACTION_EDIT)
@@ -83,6 +113,6 @@ public class SensorPlugin extends CordovaPlugin  {
              
         this.cordova.getActivity().startActivity(calIntent);
         callbackContext.success();    
-    }
+    }*/
     
 }
