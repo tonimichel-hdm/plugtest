@@ -8,6 +8,10 @@ import org.json.JSONException;
 
 import java.util.*;
 
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -17,7 +21,6 @@ public class SensorPlugin extends CordovaPlugin {
     public static final String ECHO = "doEcho";
     public static final String GET_SENSOR_LIST = "getSensorList";
    
-	public SensorManager mSensorManager;
 
     
     @Override
@@ -55,9 +58,12 @@ public class SensorPlugin extends CordovaPlugin {
     
     private void getSensorList(CallbackContext callbackContext) {
     	/* Setup Sensor Manager */
+        public SensorManager mSensorManager;
+
     	mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-    	List<Sensor> deviceSensors = mSensorManager.getSensorList(Sensor.TYPE_ALL);
     	
+        List<Sensor> deviceSensors = mSensorManager.getSensorList(Sensor.TYPE_ALL);
+        
     	/* Type Conversion fuer Kommunikation mit JS */
     	JSONArray jsonDeviceSensors = new JSONArray(deviceSensors);
     	
