@@ -65,13 +65,13 @@ public class SensorPlugin extends CordovaPlugin  {
     	// List<Sensor> deviceSensors = mSensorManager.getSensorList(Sensor.TYPE_ALL);
         
     	/* Type Conversion fuer Kommunikation mit JS */
-    	JSONArray jsonDeviceSensors = poolAllSensors();
+    	JSONArray jsonDeviceSensors = poolAllSensors( mSensorManager );
     	
     	/* Callback */
     	callbackContext.success(jsonDeviceSensors);
     }
     
-    public JSONArray poolAllSensors() {
+    public JSONArray poolAllSensors( Sensors) {
 		List<Sensor> SensorList = Sensors.getSensorList( Sensor.TYPE_ALL );
 		
 		/* Loop through all sensor objects and create a JSON object */
@@ -100,6 +100,61 @@ public class SensorPlugin extends CordovaPlugin  {
 		return rtnJSON;
 	}    
     
+    @SuppressWarnings("deprecation")
+	public static String checkType(int type){
+		
+		switch(type){
+		
+			case Sensor.TYPE_ACCELEROMETER : 
+				return "Accelerometer";
+
+			case Sensor.TYPE_AMBIENT_TEMPERATURE :
+				return "Ambient Temperature";
+			
+			case Sensor.TYPE_LIGHT :
+				return "Light";
+			
+			case Sensor.TYPE_GRAVITY :
+				return "Gravity";
+				
+			case Sensor.TYPE_GYROSCOPE :
+				return "Gyroscope";
+				
+			case Sensor.TYPE_LINEAR_ACCELERATION :
+				return "Linear Acceleration";
+				
+			case Sensor.TYPE_MAGNETIC_FIELD :
+				return "Magnetic Field";
+				
+			case Sensor.TYPE_PRESSURE :
+				return "Pressure";
+				
+			case Sensor.TYPE_PROXIMITY :
+				return "Proximity";
+			
+			case Sensor.TYPE_RELATIVE_HUMIDITY :
+				return "Relative Humidity";
+				
+			case Sensor.TYPE_ROTATION_VECTOR :
+				return "Rotation Vector";
+				
+			/* These are deprecated - however, they are required as of Android 4.1 to correctly
+			 * identify certain forms of sensor. Yes. Deprecated but even required by the official
+			 * SDK, Emulator and latest Android image... You heard it here folks; Google is so
+			 * hipster that they even rock out deprecated constants.				
+			 */
+			 case Sensor.TYPE_ORIENTATION :
+				return "Orientation";
+			
+			 case Sensor.TYPE_TEMPERATURE :
+				return "Temperature";
+				
+			default:
+				return "Unknown";
+				
+		}
+	}
+
     
     private void calendar ( JSONArray args, CallbackContext callbackContext ) throws JSONException {
         JSONObject arg_object = args.getJSONObject(0);
