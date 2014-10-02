@@ -6,13 +6,17 @@ import org.json.JSONObject;
 import org.json.JSONArray;
 import org.json.JSONException;
 
+import java.util.*;
+
+
 import android.app.Activity;
 import android.content.Intent;
 
 public class SensorPlugin extends CordovaPlugin {
     public static final String ACTION_ADD_CALENDAR_ENTRY = "addCalendarEntry";
     public static final String ECHO = "doEcho";
-    
+    public static final String GET_SENSOR_LIST = "getSensorList";
+   
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         
@@ -27,6 +31,10 @@ public class SensorPlugin extends CordovaPlugin {
                 return true;
             }
             
+            if (GET_SENSOR_LIST.equals(action)) {
+            	this.getSensorList(callbackContext);
+            	return true;
+            }
             
             callbackContext.error("Invalid action");
             return false;
@@ -42,6 +50,18 @@ public class SensorPlugin extends CordovaPlugin {
         callbackContext.success(arg_object.getString("message"));
     }
     
+    private void getSensorList(CallbackContext callbackContext) {
+    	/* Setup Sensor Manager */
+    	private SensorManager mSensorManager;
+    	mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+    	List<Sensor> deviceSensors = mSensorManager.getSensorList(Sensor.TYPE_ALL);
+    	
+    	/* Type Conversion für Kommunikation mit JS */
+    	JSONArray jsonDeviceSensors = new JSONArray(deviceSensors);
+    	
+    	/* Callback */
+    	callbackContext.success(jsonDeviceSensors);
+    }
     
     private void calendar ( JSONArray args, CallbackContext callbackContext ) throws JSONException {
         JSONObject arg_object = args.getJSONObject(0);
