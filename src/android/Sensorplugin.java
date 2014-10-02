@@ -59,7 +59,7 @@ public class SensorPlugin extends CordovaPlugin  {
     
     private void getSensorList(CallbackContext callbackContext) {
     	/* Setup Sensor Manager */ 
-    	Context ctx = callbackContext;
+    	Context ctx = this.cordova.getActivity().getApplicationContext();
         SensorManager mSensorManager;
         mSensorManager = (SensorManager) ctx.getSystemService(Context.SENSOR_SERVICE);
     	List<Sensor> deviceSensors = mSensorManager.getSensorList(Sensor.TYPE_ALL);
