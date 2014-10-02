@@ -71,7 +71,7 @@ public class SensorPlugin extends CordovaPlugin  {
     	callbackContext.success(jsonDeviceSensors);
     }
     
-    public JSONArray poolAllSensors( Sensors) {
+    public JSONArray poolAllSensors(SensorManager Sensors) {
 		List<Sensor> SensorList = Sensors.getSensorList( Sensor.TYPE_ALL );
 		
 		/* Loop through all sensor objects and create a JSON object */
