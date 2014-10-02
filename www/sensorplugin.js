@@ -1,4 +1,5 @@
 var sensorplugin = {
+    
     createEvent: function(title, location, notes, startDate, endDate, successCallback, errorCallback) {
         cordova.exec(
             successCallback, // success callback function
@@ -22,6 +23,18 @@ var sensorplugin = {
             'SensorPlugin',
             'doEcho',
             [{"message": msg}]
+        );
+    }
+    
+    //Get a list of all available sensors
+    
+    getSensorList: function ( successCallback, errorCallback ) {
+        cordova.exec(
+            successCallback,
+            errorCallback,
+            'SensorPlugin',
+            'getSensorList',
+            [{"sensor": "all"}]
         );
     }
 }
