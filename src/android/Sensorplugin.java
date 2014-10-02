@@ -19,7 +19,7 @@ import android.app.*;
 //import android.content.Intent;
 import android.content.*;
 
-public class SensorPlugin extends CordovaPlugin implements SensorEventListener {
+public class SensorPlugin extends CordovaPlugin  {
     public static final String ACTION_ADD_CALENDAR_ENTRY = "addCalendarEntry";
     public static final String ECHO = "doEcho";
     public static final String GET_SENSOR_LIST = "getSensorList";
@@ -59,8 +59,9 @@ public class SensorPlugin extends CordovaPlugin implements SensorEventListener {
     
     private void getSensorList(CallbackContext callbackContext) {
     	/* Setup Sensor Manager */
+    	Context ctx;
         SensorManager mSensorManager;
-        mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        mSensorManager = ctx.getSystemService(Context.SENSOR_SERVICE);
     	List<Sensor> deviceSensors = mSensorManager.getSensorList(Sensor.TYPE_ALL);
         
     	/* Type Conversion fuer Kommunikation mit JS */
