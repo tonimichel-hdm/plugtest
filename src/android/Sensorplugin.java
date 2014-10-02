@@ -100,7 +100,7 @@ public class SensorPlugin extends CordovaPlugin  {
 		return rtnJSON;
 	}    
     
-    /*
+    
     private void calendar ( JSONArray args, CallbackContext callbackContext ) throws JSONException {
         JSONObject arg_object = args.getJSONObject(0);
         Intent calIntent = new Intent(Intent.ACTION_EDIT)
@@ -113,6 +113,6 @@ public class SensorPlugin extends CordovaPlugin  {
              
         this.cordova.getActivity().startActivity(calIntent);
         callbackContext.success();    
-    }*/
+    }
     
 }
