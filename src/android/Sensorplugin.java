@@ -19,13 +19,11 @@ import android.app.*;
 //import android.content.Intent;
 import android.content.*;
 
-public class SensorPlugin extends CordovaPlugin {
+public class SensorPlugin extends CordovaPlugin implements SensorEventListener {
     public static final String ACTION_ADD_CALENDAR_ENTRY = "addCalendarEntry";
     public static final String ECHO = "doEcho";
     public static final String GET_SENSOR_LIST = "getSensorList";
-   
-
-    
+       
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         
