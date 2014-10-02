@@ -14,7 +14,9 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 
 import android.app.Activity;
+
 import android.content.Intent;
+import android.content.Context;
 
 public class SensorPlugin extends CordovaPlugin {
     public static final String ACTION_ADD_CALENDAR_ENTRY = "addCalendarEntry";
