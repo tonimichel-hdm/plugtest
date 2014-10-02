@@ -24,7 +24,7 @@ var sensorplugin = {
             'doEcho',
             [{"message": msg}]
         );
-    }
+    },
     
     //Get a list of all available sensors
     
